@@ -1,7 +1,7 @@
 import type { Post } from '../types/post'
 export const samplePosts: Post[] = [
 
-    
+
   {
     id: 1,
     title: 'Why TypeScript Beats Plain JavaScript for Teams',

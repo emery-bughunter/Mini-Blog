@@ -1,7 +1,8 @@
+// The shape of a single blog post
 export interface Post {
-  id: number
+  id: number          
   title: string
   author: string
   content: string
-  publishedAt: Date
+  publishedAt: Date   
 }
