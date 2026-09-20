@@ -1,9 +1,8 @@
 import Header from './components/Header'
 import PostList from './components/postlist.tsx'
 import './App.css'
+import Footer from './components/Footer.tsx'
 
-// App renders the two top-level pieces of the page: the header and the
-// blog post list. It holds no state of its own — components stay self-contained.
 function App() {
   return (
     <>
@@ -11,6 +10,7 @@ function App() {
       <main>
         <PostList />
       </main>
+      <Footer />
     </>
   )
 }
