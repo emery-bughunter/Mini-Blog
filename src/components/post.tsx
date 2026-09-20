@@ -6,18 +6,15 @@ interface PostProps {
   isNew?: boolean 
 }
 const Post = ({ post, isNew = false }: PostProps) => (
-  <article className="post-card">
+  <article className={`post post--${post.author.toLowerCase().replace(/\s+/g, '-')}`}>
     <h2>{post.title}</h2>
-    {isNew && <span className="badge">New!</span>}
-    <p className="meta">
-      By {post.author} · {post.publishedAt.toLocaleDateString()}
-    </p>
-    {/* Preview = first 120 chars */}
-    <p className="preview">
-      {post.content.length > 120
-        ? `${post.content.slice(0, 120)}…`
-        : post.content}
-    </p>
+    <img
+      className="author-avatar"
+      src={`https://i.pravatar.cc/48?u=${encodeURIComponent(post.author)}`}
+      alt=""
+    />
+    <p className="meta">By {post.author} · {post.publishedAt.toLocaleDateString()}</p>
+    <p className="preview">{post.content}</p>
   </article>
 )
 export default Post
