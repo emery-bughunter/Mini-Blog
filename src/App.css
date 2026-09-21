@@ -1,19 +1,16 @@
-/* mini_blog — the whole visual layer.
-   Method 1 of 2: external stylesheet. Tokens stay centralised in
-   index.css; this file only wires tokens to components.
-   Method 2 (inline) lives on the Footer "Email" link. */
 :root {
-  --accent: #f97316;          /* orange — brand, New! badge, hover */
+  --accent: #f97316;
   --accent-bg: #fff3e8;
   --accent-border: #fbd9bd;
-  --teal: #0d9488;            /* secondary accent — authors, meta */
+  --teal: #4f46e5;
   --text: #1f2937;
   --text-h: #111827;
-  --muted: #6b7280;           /* NEW — defined so previews stop vanishing */
+  --muted: #6b7280;
   --border: #e5e7eb;
   --card: #ffffff;
   --radius: 12px;
-  --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 6px 20px rgba(16, 24, 40, 0.08);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
 }
 
 * { box-sizing: border-box; }
@@ -21,16 +18,13 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: var(--sans);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(900px 500px at 10% -10%, #fff7ed 0%, transparent 55%),
-    radial-gradient(800px 400px at 105% 15%, #f0fdfa 0%, transparent 50%),
-    #fafafa;
+  background: #f8fafc;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- Header: sticky, glass, nav renders as rounded pills ---- */
+/* ---- Header ---- */
 header {
   position: sticky;
   top: 0;
@@ -39,107 +33,173 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.9rem 1.5rem;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(8px) saturate(140%);
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
 .brand {
   font-weight: 800;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
-  color: var(--accent);
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  color: var(--text-h);
 }
 header nav a,
 header nav button {
   display: inline-block;
-  padding: 0.5rem 1.1rem;
-  border: 1px solid var(--accent-border);
-  border-radius: 999px;              /* ← the rounded header button */
-  background: var(--accent-bg);
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
   color: var(--text-h);
   font: inherit;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 header nav a:hover,
 header nav button:hover {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: var(--shadow);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
   transform: translateY(-1px);
 }
 
-/* ---- Posts: real cards, not paragraphs ---- */
+/* ---- Main Feed ---- */
 main {
   width: min(100% - 2rem, 46rem);
   margin: 0 auto;
-  padding: 2rem 0 3rem;
+  padding: 2.5rem 0 4rem;
 }
-.post-card {
-  margin: 0 0 1.25rem;
-  padding: 1.4rem 1.6rem;
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---- Blog Post Cards (White Box with Hover & Left Accent) ---- */
+.post {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
   box-shadow: var(--shadow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.post-card h2 { margin: 0 0 0.3rem; font-size: 1.4rem; color: var(--text-h); }
-.post-card .meta {
-  margin: 0 0 0.7rem;
-  font-size: 0.85rem;
+
+.post:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: #cbd5e1;
+}
+
+/* First post or specific highlight gets left accent stripe like reference */
+.post:first-of-type {
+  border-left: 5px solid var(--accent);
+  background: linear-gradient(to right, #fffdfa 0%, #ffffff 15%);
+}
+
+.post-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.post h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-h);
+  letter-spacing: -0.01em;
+}
+
+/* Author row with circular profile avatar */
+.post-author-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: #f1f5f9;
+}
+
+.author-name {
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--teal);
 }
-.post-card .preview {
-  margin: 0;
+
+.preview {
+  margin: 0 0 1rem;
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--muted);                /* now visible */
+  color: var(--muted);
 }
 
-/* New! badge — CONDITIONAL: only rendered by Post when isNew is true */
+.post-date {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Badge (New!) */
 .badge {
   display: inline-block;
-  margin-right: 0.5rem;
-  padding: 0.15rem 0.6rem;
+  padding: 0.2rem 0.65rem;
   border-radius: 999px;
   font-size: 0.7rem;
   font-weight: 800;
-  color: #fff;
-  background: var(--accent);
-  vertical-align: middle;
+  color: #ffffff;
+  background: #ef4444;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-/* ---- Footer: contact links as rounded pills on glass ---- */
+/* ---- Footer ---- */
 footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 1.1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  background: #ffffff;
   border-top: 1px solid var(--border);
 }
-footer .brand { color: var(--teal); }
+footer .brand { color: var(--muted); font-size: 1rem; font-weight: 700; }
+footer .contact {
+  display: flex;
+  gap: 0.5rem;
+}
 footer .contact a {
   display: inline-block;
-  margin-left: 0.5rem;
   padding: 0.45rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 999px;              /* ← the rounded footer buttons */
+  border-radius: 999px;
   color: var(--text-h);
   text-decoration: none;
+  font-size: 0.9rem;
   font-weight: 600;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  background: #ffffff;
+  transition: all 0.2s ease;
 }
 footer .contact a:hover {
-  border-color: var(--accent-border);
-  background: var(--accent-bg);
-  box-shadow: var(--shadow);
+  border-color: var(--teal);
+  color: var(--teal);
+  background: #f0fdf4;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   transform: translateY(-1px);
 }

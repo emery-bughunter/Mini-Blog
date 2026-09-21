@@ -7,16 +7,20 @@ interface PostProps {
 }
 const Post = ({ post, isNew = false }: PostProps) => (
   <article className={`post post--${post.author.toLowerCase().replace(/\s+/g, '-')}`}>
-    <h2>{post.title}</h2>
-     {isNew && <span className="badge">New!</span>}
-    <p className="meta"></p>
-    <img
-      className="author-avatar"
-      src={`https://i.pravatar.cc/48?u=${encodeURIComponent(post.author)}`}
-      alt=""
-    />
-    <p className="meta">By {post.author} · {post.publishedAt.toLocaleDateString()}</p>
+    <div className="post-header-row">
+      <h2>{post.title}</h2>
+      {isNew && <span className="badge">NEW!</span>}
+    </div>
+    <div className="post-author-row">
+      <img
+        className="author-avatar"
+        src={`https://i.pravatar.cc/48?u=${encodeURIComponent(post.author)}`}
+        alt={post.author}
+      />
+      <span className="author-name">By {post.author}</span>
+    </div>
     <p className="preview">{post.content}</p>
+    <div className="post-date">{post.publishedAt.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</div>
   </article>
 )
 export default Post
