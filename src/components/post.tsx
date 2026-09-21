@@ -8,6 +8,8 @@ interface PostProps {
 const Post = ({ post, isNew = false }: PostProps) => (
   <article className={`post post--${post.author.toLowerCase().replace(/\s+/g, '-')}`}>
     <h2>{post.title}</h2>
+     {isNew && <span className="badge">New!</span>}
+    <p className="meta"></p>
     <img
       className="author-avatar"
       src={`https://i.pravatar.cc/48?u=${encodeURIComponent(post.author)}`}
