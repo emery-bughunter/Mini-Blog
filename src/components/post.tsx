@@ -24,13 +24,13 @@ const Post = ({ post, isNew = false }: PostProps) => {
   return (
     <article className="post">
       {/* Reddit User Header */}
-      <div className="reddit-header">
+      <div className="post-header">
         <img
           className="author-avatar"
           src={`https://i.pravatar.cc/48?u=${encodeURIComponent(post.author)}`}
           alt={post.author}
         />
-        <div className="reddit-meta">
+        <div className="post-meta">
           <span className="reddit-username">u/{post.author.toLowerCase().replace(/\s+/g, '')}</span>
           <span className="reddit-dot">•</span>
           <span className="reddit-time">2d ago</span>
@@ -68,7 +68,7 @@ const Post = ({ post, isNew = false }: PostProps) => {
           {post.replies.map((reply) => (
             <div key={reply.id} className="reddit-comment">
               <div className="comment-content-wrap">
-                <div className="reddit-header">
+                <div className="post-header">
                   <img
                     className="author-avatar small"
                     src={`https://i.pravatar.cc/48?u=${encodeURIComponent(reply.author)}`}

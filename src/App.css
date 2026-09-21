@@ -18,6 +18,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text);
   background: #dae0e6;
+  text-align: left;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -34,11 +35,12 @@ header {
   background: rgba(243, 244, 246, 0.88);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  text-align: left;
 }
 .brand {
-  font-weight: 800;
+  font-weight: 600;
   font-size: 1.25rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: #111827;
 }
 header nav a,
@@ -50,7 +52,7 @@ header nav button {
   background: #ffffff;
   color: #374151;
   font: inherit;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -68,6 +70,7 @@ main {
   width: min(100% - 2rem, 44rem);
   margin: 0 auto;
   padding: 2rem 0 4rem;
+  text-align: left;
 }
 
 .post-list {
@@ -81,6 +84,7 @@ main {
   border-radius: var(--radius);
   padding: 1.25rem 1.50rem;
   box-shadow: var(--shadow);
+  text-align: left;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -88,7 +92,7 @@ main {
   border-color: #b9bec7;
   box-shadow: var(--shadow-hover);
 }
-.reddit-header {
+.post-header {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -109,7 +113,7 @@ main {
   height: 28px;
 }
 
-.reddit-meta {
+.post-meta {
   display: flex;
   align-items: center;
   gap: 0.35rem;
@@ -117,7 +121,7 @@ main {
 }
 
 .reddit-username {
-  font-weight: 600;
+  font-weight: 500;
   color: #1a1a1b;
 }
 
@@ -133,7 +137,7 @@ main {
 .reddit-title {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #1a1a1b;
   letter-spacing: -0.01em;
 }
@@ -163,7 +167,7 @@ main {
   background: #f8fafc;
   color: #475569;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -186,7 +190,7 @@ main {
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
   font-size: 0.65rem;
-  font-weight: 800;
+  font-weight: 600;
   color: #ffffff;
   background: #ef4444;
   letter-spacing: 0.05em;
@@ -207,6 +211,7 @@ main {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 0.85rem 1rem;
+  text-align: left;
 }
 
 .comment-text {
@@ -218,7 +223,7 @@ main {
 
 .comment-score {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-muted);
 }
 footer {
@@ -231,8 +236,9 @@ footer {
   background: rgba(243, 244, 246, 0.88);
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--border);
+  text-align: left;
 }
-footer .brand { color: var(--text-muted); font-size: 1rem; font-weight: 700; }
+footer .brand { color: var(--text-muted); font-size: 1rem; font-weight: 600; }
 footer .contact {
   display: flex;
   gap: 0.5rem;
@@ -245,7 +251,7 @@ footer .contact a {
   color: #374151;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   background: #ffffff;
   transition: all 0.2s ease;
 }
