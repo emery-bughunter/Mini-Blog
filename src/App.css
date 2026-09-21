@@ -1,16 +1,13 @@
 :root {
-  --accent: #f97316;
-  --accent-bg: #fff3e8;
-  --accent-border: #fbd9bd;
-  --teal: #4f46e5;
-  --text: #1f2937;
-  --text-h: #111827;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --card: #ffffff;
+  --accent: #ff4500;          /* Reddit orange accent */
+  --accent-bg: #fff1eb;
+  --text: #1a1a1b;
+  --text-muted: #787c7e;
+  --border: #e2e8f0;
+  --card-bg: #ffffff;
   --radius: 12px;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-  --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
 }
 
 * { box-sizing: border-box; }
@@ -18,13 +15,13 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text);
-  background: #f8fafc;
+  background: #dae0e6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- Header ---- */
+/* ---- Header (Grey Translucent) ---- */
 header {
   position: sticky;
   top: 0;
@@ -34,24 +31,24 @@ header {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(243, 244, 246, 0.88);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
 .brand {
   font-weight: 800;
   font-size: 1.25rem;
   letter-spacing: -0.03em;
-  color: var(--text-h);
+  color: #111827;
 }
 header nav a,
 header nav button {
   display: inline-block;
   padding: 0.5rem 1.2rem;
-  border: 1px solid var(--border);
+  border: 1px solid #d1d5db;
   border-radius: 999px;
   background: #ffffff;
-  color: var(--text-h);
+  color: #374151;
   font: inherit;
   font-weight: 600;
   text-decoration: none;
@@ -63,104 +60,139 @@ header nav a:hover,
 header nav button:hover {
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+  background: var(--accent-bg);
   transform: translateY(-1px);
 }
 
 /* ---- Main Feed ---- */
 main {
-  width: min(100% - 2rem, 46rem);
+  width: min(100% - 2rem, 44rem);
   margin: 0 auto;
-  padding: 2.5rem 0 4rem;
+  padding: 2rem 0 4rem;
 }
 
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-/* ---- Blog Post Cards (White Box with Hover & Left Accent) ---- */
+/* ---- Reddit Post Card ---- */
 .post {
-  position: relative;
-  background: var(--card);
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.5rem 1.75rem;
+  padding: 1.25rem 1.50rem;
   box-shadow: var(--shadow);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .post:hover {
-  transform: translateY(-3px);
+  border-color: #b9bec7;
   box-shadow: var(--shadow-hover);
-  border-color: #cbd5e1;
 }
 
-/* First post or specific highlight gets left accent stripe like reference */
-.post:first-of-type {
-  border-left: 5px solid var(--accent);
-  background: linear-gradient(to right, #fffdfa 0%, #ffffff 15%);
-}
-
-.post-header-row {
+/* Reddit Header Row (Avatar + Username + Time) */
+.reddit-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.post h2 {
-  margin: 0;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text-h);
-  letter-spacing: -0.01em;
-}
-
-/* Author row with circular profile avatar */
-.post-author-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .author-avatar {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--border);
+  border: 1px solid #cbd5e1;
   background: #f1f5f9;
 }
 
-.author-name {
-  font-size: 0.9rem;
+.author-avatar.small {
+  width: 28px;
+  height: 28px;
+}
+
+.reddit-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.reddit-username {
   font-weight: 600;
-  color: var(--teal);
+  color: #1a1a1b;
+}
+
+.reddit-dot {
+  color: var(--text-muted);
+}
+
+.reddit-time {
+  color: var(--text-muted);
+}
+
+/* Post Title & Content */
+.reddit-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1b;
+  letter-spacing: -0.01em;
 }
 
 .preview {
   margin: 0 0 1rem;
   font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--muted);
+  line-height: 1.55;
+  color: #334155;
 }
 
-.post-date {
-  font-size: 0.8rem;
-  color: #9ca3af;
-  font-weight: 500;
+/* Reddit Action Bar */
+.reddit-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
-/* Badge (New!) */
-.badge {
-  display: inline-block;
-  padding: 0.2rem 0.65rem;
+.vote-btn, .reply-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid #e2e8f0;
   border-radius: 999px;
-  font-size: 0.7rem;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.vote-btn:hover, .reply-toggle-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.vote-btn.voted {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-color: #ffb399;
+}
+
+/* Badge */
+.badge {
+  margin-left: auto;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
   font-weight: 800;
   color: #ffffff;
   background: #ef4444;
@@ -168,7 +200,38 @@ main {
   text-transform: uppercase;
 }
 
-/* ---- Footer ---- */
+/* ---- Reddit Comment Thread ---- */
+.reddit-thread {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reddit-comment {
+  position: relative;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+}
+
+.comment-text {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.comment-score {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ---- Footer (Grey Translucent) ---- */
 footer {
   display: flex;
   align-items: center;
@@ -176,10 +239,11 @@ footer {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1.25rem 2rem;
-  background: #ffffff;
+  background: rgba(243, 244, 246, 0.88);
+  backdrop-filter: blur(12px);
   border-top: 1px solid var(--border);
 }
-footer .brand { color: var(--muted); font-size: 1rem; font-weight: 700; }
+footer .brand { color: var(--text-muted); font-size: 1rem; font-weight: 700; }
 footer .contact {
   display: flex;
   gap: 0.5rem;
@@ -187,9 +251,9 @@ footer .contact {
 footer .contact a {
   display: inline-block;
   padding: 0.45rem 1rem;
-  border: 1px solid var(--border);
+  border: 1px solid #d1d5db;
   border-radius: 999px;
-  color: var(--text-h);
+  color: #374151;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
@@ -197,9 +261,8 @@ footer .contact a {
   transition: all 0.2s ease;
 }
 footer .contact a:hover {
-  border-color: var(--teal);
-  color: var(--teal);
-  background: #f0fdf4;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
   transform: translateY(-1px);
 }

@@ -1,6 +1,6 @@
 const Header = () => (
   <header>
-    <span className="brand">dev_technologies</span>
+    <span className="brand">mini_blog</span>
     <nav>
       {}
       <a href="#">New Post</a>
