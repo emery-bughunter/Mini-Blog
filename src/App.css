@@ -1,5 +1,5 @@
 :root {
-  --accent: #ff4500;          /* Reddit orange accent */
+  --accent: #bd6747;  
   --accent-bg: #fff1eb;
   --text: #1a1a1b;
   --text-muted: #787c7e;
@@ -64,7 +64,6 @@ header nav button:hover {
   transform: translateY(-1px);
 }
 
-/* ---- Main Feed ---- */
 main {
   width: min(100% - 2rem, 44rem);
   margin: 0 auto;
@@ -76,8 +75,6 @@ main {
   flex-direction: column;
   gap: 1rem;
 }
-
-/* ---- Reddit Post Card ---- */
 .post {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -91,8 +88,6 @@ main {
   border-color: #b9bec7;
   box-shadow: var(--shadow-hover);
 }
-
-/* Reddit Header Row (Avatar + Username + Time) */
 .reddit-header {
   display: flex;
   align-items: center;
@@ -149,8 +144,6 @@ main {
   line-height: 1.55;
   color: #334155;
 }
-
-/* Reddit Action Bar */
 .reddit-actions {
   display: flex;
   align-items: center;
@@ -199,8 +192,6 @@ main {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-
-/* ---- Reddit Comment Thread ---- */
 .reddit-thread {
   margin-top: 1rem;
   padding-left: 1rem;
@@ -230,8 +221,6 @@ main {
   font-weight: 600;
   color: var(--text-muted);
 }
-
-/* ---- Footer (Grey Translucent) ---- */
 footer {
   display: flex;
   align-items: center;

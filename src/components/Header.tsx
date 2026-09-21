@@ -1,8 +1,7 @@
 const Header = () => (
   <header>
-    <span className="brand">mini_blog</span>
+    <span className="brand">Dev Insights</span>
     <nav>
-      {}
       <a href="#">New Post</a>
     </nav>
   </header>
