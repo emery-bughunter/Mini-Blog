@@ -120,21 +120,21 @@ main {
   font-size: 0.85rem;
 }
 
-.reddit-username {
+.author-handle {
   font-weight: 500;
   color: #1a1a1b;
 }
 
-.reddit-dot {
+.separator {
   color: var(--text-muted);
 }
 
-.reddit-time {
+.post-time {
   color: var(--text-muted);
 }
 
 /* Post Title & Content */
-.reddit-title {
+.post-title {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
   font-weight: 600;
@@ -148,7 +148,7 @@ main {
   line-height: 1.55;
   color: #334155;
 }
-.reddit-actions {
+.post-actions {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -205,7 +205,7 @@ main {
   gap: 1rem;
 }
 
-.reddit-comment {
+.comment-box {
   position: relative;
   background: #f8fafc;
   border: 1px solid #e2e8f0;

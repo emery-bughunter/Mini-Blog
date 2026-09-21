@@ -31,19 +31,19 @@ const Post = ({ post, isNew = false }: PostProps) => {
           alt={post.author}
         />
         <div className="post-meta">
-          <span className="reddit-username">u/{post.author.toLowerCase().replace(/\s+/g, '')}</span>
-          <span className="reddit-dot">•</span>
-          <span className="reddit-time">2d ago</span>
+          <span className="author-handle">u/{post.author.toLowerCase().replace(/\s+/g, '')}</span>
+          <span className="separator">•</span>
+          <span className="post-time">2d ago</span>
         </div>
         {isNew && <span className="badge">NEW!</span>}
       </div>
 
       {/* Post Title & Content */}
-      <h2 className="reddit-title">{post.title}</h2>
+      <h2 className="post-title">{post.title}</h2>
       <p className="preview">{post.content}</p>
 
       {/* Reddit Action Bar (Upvote & Replies toggle) */}
-      <div className="reddit-actions">
+      <div className="post-actions">
         <button 
           className={`vote-btn ${hasUpvoted ? 'voted' : ''}`} 
           onClick={handleUpvote}
@@ -66,7 +66,7 @@ const Post = ({ post, isNew = false }: PostProps) => {
       {showReplies && post.replies && (
         <div className="reddit-thread">
           {post.replies.map((reply) => (
-            <div key={reply.id} className="reddit-comment">
+            <div key={reply.id} className="comment-box">
               <div className="comment-content-wrap">
                 <div className="post-header">
                   <img
@@ -74,9 +74,9 @@ const Post = ({ post, isNew = false }: PostProps) => {
                     src={`https://i.pravatar.cc/48?u=${encodeURIComponent(reply.author)}`}
                     alt={reply.author}
                   />
-                  <span className="reddit-username">u/{reply.author}</span>
-                  <span className="reddit-dot">•</span>
-                  <span className="reddit-time">{reply.timeAgo}</span>
+                  <span className="author-handle">u/{reply.author}</span>
+                  <span className="separator">•</span>
+                  <span className="post-time">{reply.timeAgo}</span>
                 </div>
                 <p className="comment-text">{reply.content}</p>
                 <div className="comment-score">▲ {reply.score}</div>
