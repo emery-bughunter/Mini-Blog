@@ -1,3 +1,5 @@
+import withLogger from './withLogger'
+
 const Footer = () => (
   <footer>
     <span className="brand">mini_blog</span>
@@ -9,4 +11,4 @@ const Footer = () => (
   </footer>
 )
 
-export default Footer
+export default withLogger(Footer, 'Footer')
