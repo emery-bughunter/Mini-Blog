@@ -1,32 +1,62 @@
-# React + TypeScript + Vite
+# Mini-Blog (Dev Insights)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, lightweight React and TypeScript mini-blog application built with **Vite**.built for easy communication where developers can share quick messages & tips related to their projects
 
-Currently, two official plugins are available:
+## Installation & Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/emery-bughunter/Mini-Blog.git
+   cd Mini-Blog
+   ```
 
-## React Compiler
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. **Run the Application:**
+   ```bash
+   npm run dev
+   ```
+   Open your browser and navigate to `http://localhost:5173`.
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Project Structure
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```text
+src/App.tsx –                   root application layout
+src/components/Header.tsx –     site header
+src/components/Post.tsx –       memoized single post card
+src/components/PostList.tsx –   list of posts
+src/components/withLogger.tsx – HOC logging example
+src/types/post.ts –             BlogPost type definition
+src/App.css –                   external styling
+src/index.css –                 base global styling minimalistic like this
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+---
+
+## Technical Choices & Rationale
+
+### 1. Component Types (Functional vs. Class)
+- **Functional Components:** All components (`Header`, `Footer`, `Post`, `PostList`) are implemented as modern React functional components using ES6 arrow functions.
+- **Rationale:** Functional components are concise, idiomatic in modern React, fully support React Hooks (`useState`), and offer better performance optimization and cleaner readability compared to legacy class components.
+
+### 2. styling methods used
+- external CSS (`src/App.css`): used to manage structural layout, card design, sticky frosted-glass header/footer, typography, and interactive hover states.
+- CSS Custom Properties / Design Tokens (`src/index.css`)** — Centralizes design tokens (`--accent`, `--text`, `--border`, `--card-bg`, `--shadow`) for maintainability and consistency.
+
+### 3. Optimization Strategies
+-  Used unique `post.id` identifiers as keys in `.map()` loops within `PostList` to ensure efficient DOM reconciliation and diffing.
+-  Separated atomic UI units (`Post`) from container/list units (`PostList`) to minimize re-render scope and maintain clean separation of concerns.
+-  Leveraged **Vite** with ESbuild pre-bundling for near-instantaneous development server startup and optimized production bundles.
+
+## external libraries used
+
+- React (`^19.2.8`)
+- React DOM (`^19.2.8`)
+- Vite (`^8.3.0`)
+- TypeScript (`~6.0.2`)
+- Oxlint (`^1.81.0`)
