@@ -18,12 +18,13 @@ const Post = ({ post, isNew = false }: PostProps) => {
     } else {
       setUpvotes(upvotes + 1)
       setHasUpvoted(true)
+      
     }
   }
 
   return (
     <article className="post">
-      {/* Reddit User Header */}
+      {}
       <div className="post-header">
         <img
           className="author-avatar"
@@ -42,7 +43,7 @@ const Post = ({ post, isNew = false }: PostProps) => {
       <h2 className="post-title">{post.title}</h2>
       <p className="preview">{post.content}</p>
 
-      {/* Reddit Action Bar (Upvote & Replies toggle) */}
+      {}
       <div className="post-actions">
         <button 
           className={`vote-btn ${hasUpvoted ? 'voted' : ''}`} 
@@ -61,8 +62,6 @@ const Post = ({ post, isNew = false }: PostProps) => {
           </button>
         )}
       </div>
-
-      {/* Collapsible Reddit Comments Section */}
       {showReplies && post.replies && (
         <div className="reddit-thread">
           {post.replies.map((reply) => (
